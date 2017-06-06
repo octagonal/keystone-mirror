@@ -164,6 +164,9 @@ list.prototype.validateRequiredInput = function (item, data, callback) {
 list.prototype.getData = function (item) {
 	var items = item.get(this.path);
 	var fieldsArray = this.fieldsArray;
+	if (!items || !items.length) {
+		return [];
+	}
 	return items.map(function (i) {
 		var result = { id: i.id };
 		for (var field of fieldsArray) {
